@@ -42,14 +42,14 @@
         repeatUntil(function() {
             var randomNum = getRandomInt(min, max);
             elements.randomNum.text(randomNum);
-        }, 30, 900);
+        }, 30, 280);
     });
 
     function repeatUntil(fn, start, end) {
         if (start < end) {
             window.setTimeout(function () {
                 fn();
-                repeatUntil(fn, start * 1.2, end);
+                repeatUntil(fn, start * 1.05, end);
             }, start);
         } else {
             elements.btn.prop('disabled', false);
