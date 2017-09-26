@@ -31,6 +31,31 @@
     //     }
     // });
 
+    var end = 1000;
+    var timeout;
+
+    elements.btn.on('click', function () {
+        var max = parseInt($('#max').val());
+        var min = parseInt($('#min').val());
+        elements.btn.prop('disabled', true);
+
+        repeatUntil(function() {
+            var randomNum = getRandomInt(min, max);
+            elements.randomNum.text(randomNum);
+        }, 30, 900);
+    });
+
+    function repeatUntil(fn, start, end) {
+        if (start < end) {
+            window.setTimeout(function () {
+                fn();
+                repeatUntil(fn, start * 1.2, end);
+            }, start);
+        } else {
+            elements.btn.prop('disabled', false);
+        }
+    }
+
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
